@@ -418,10 +418,12 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   margin-bottom: 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 4px 10px;
+  flex-wrap: wrap;
   color: var(--primary);
 }
 .result-card h4 > .icon { color: var(--accent); font-size: 18px; }
+.h4-note { font-size: 13px; font-weight: 400; color: var(--muted); }
 .result-card .hint { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
 .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .result-grid .result-card { margin-bottom: 0; }
@@ -461,17 +463,10 @@ select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px
   margin: 0 auto;
   position: relative;
 }
-.score-circle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  padding: 6px;
-  background: conic-gradient(var(--score-color, var(--accent)) var(--score-deg, 0deg), var(--border) 0deg);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
+.score-ring { position: absolute; inset: 0; transform: rotate(-90deg); }
+.score-ring circle { fill: none; stroke-width: 6; }
+.score-ring .track { stroke: var(--border); }
+.score-ring .value { stroke-linecap: round; }
 .score-number { font-size: 48px; font-weight: 800; line-height: 1; }
 .score-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 600; }
 .score-message { font-size: 15px; font-weight: 600; margin-bottom: 14px; }
@@ -703,5 +698,7 @@ footer a:hover { text-decoration: underline; }
   .print-only { display: block; }
   .print-extra { break-inside: avoid; }
   .result-card:has(#printExtras) { break-inside: auto; }
-  .score-circle::before, .bar-fill, .chip, .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .band-marker { box-shadow: none; }
+  .bar-fill, .chip, .tag, .band-track > span,
+  .insight-list li::before, .insight-list li::after { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

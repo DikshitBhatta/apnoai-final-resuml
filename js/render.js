@@ -76,9 +76,15 @@ export function renderResults(result, { activeTab }) {
 
   return `
     <div class="result-card">
-      <h4>${icon('target')} ATS match score</h4>
+      <h4>${icon('target')} ATS match score
+        <span class="h4-note">Reviewed as ${esc(PERSONAS[result.personaId]?.label || result.personaId)} · ${result.personaSource === 'auto' ? 'auto-selected' : 'your choice'}</span>
+      </h4>
       <div class="score-layout">
-        <div class="score-circle" style="--score-deg: ${a.ats_score * 3.6}deg; --score-color: ${tone.color};">
+        <div class="score-circle">
+          <svg class="score-ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="value" cx="60" cy="60" r="56" pathLength="100" stroke-dasharray="${a.ats_score} 100" style="stroke: ${tone.color};"/>
+          </svg>
           <div class="score-number" style="color: ${tone.color};">${a.ats_score}</div>
           <div class="score-label">out of 100</div>
         </div>
@@ -138,7 +144,6 @@ export function renderResults(result, { activeTab }) {
 
     <div class="result-card">
       <h4>${icon('key')} Missing keywords</h4>
-      <p class="hint">Keywords from the job description that your resume lacks. Each one is double-checked against both texts, because LLMs sometimes report keywords that are already there.</p>
       <div class="keyword-list">
         ${items(guard.items, k => k.status === 'verified'
           ? `<span class="chip verified" title="Found in the JD, absent from your resume">${icon('check')} ${esc(k.keyword)}</span>`

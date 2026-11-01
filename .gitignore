@@ -1,0 +1,8 @@
+# Local secrets
+js/config.local.js
+.env
+.env.*
+
+.vercel
+.DS_Store
+node_modules/

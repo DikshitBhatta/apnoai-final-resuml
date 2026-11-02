@@ -2,6 +2,8 @@
 
 ResuML checks how well a resume matches a job description. Paste or upload both, and it gives you a match score, the keywords you're missing, what your resume already does well, and specific edits to make. It can also rewrite weak bullet points, plan a skill-gap roadmap and suggest interview questions.
 
+Built by Dikshit Bhatta as the final project for the ApnoAI AI/ML Internship (November 2026).
+
 **Live:** https://resu-ml.vercel.app/
 
 ## Features
@@ -62,7 +64,7 @@ The site runs on Vercel with no build step. The API key is set as the `GEMINI_AP
 The proxy (`api/gemini.js`):
 - only forwards same-origin requests for `gemini-3.5-flash-lite`;
 - limits the request size;
-- allows each IP 20 requests a minute.
+- allows each IP 10 requests a minute.
 
 ## Project structure
 

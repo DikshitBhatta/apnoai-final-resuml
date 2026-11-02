@@ -1,7 +1,7 @@
 const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
 const ALLOWED_MODELS = new Set(['gemini-3.5-flash-lite']); // keep in sync with js/config.js
 const MAX_BODY_CHARS = 100000;
-const RATE_LIMIT = 20;            // requests per IP...
+const RATE_LIMIT = 10;            // requests per IP...
 const RATE_WINDOW_MS = 60 * 1000; // ...per minute
 
 // Per-instance and reset on cold start: a light guard against quota abuse, not a hard limit.
